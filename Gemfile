@@ -20,6 +20,7 @@ gem "webpacker"
 
 group :development, :test do
   gem "jazz_fingers"
+  gem "pry-byebug"
   gem "pry-rails"
   gem "rspec-rails"
 end
