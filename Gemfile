@@ -27,6 +27,9 @@ end
 
 group :test do
   gem "capybara"
+  gem "shoulda-matchers",
+      github: "thoughtbot/shoulda-matchers",
+      branch: "rails-5"
 end
 
 group :development do
