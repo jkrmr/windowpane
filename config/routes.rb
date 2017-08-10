@@ -2,7 +2,10 @@
 
 Rails.application.routes.draw do
 
+  resource :dashboard, only: :index
+  resource :feed, only: :show
   resources :users, only: :show
-  root to: "dashboard#home"
+
+  root to: "dashboard#index"
 
 end

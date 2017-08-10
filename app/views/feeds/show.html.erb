@@ -3,9 +3,9 @@
 <ul>
   <% tweets.each do |tweet| %>
     <li>
-      <%= tweet.text %>
+      <%= tweet.date_posted %>
       <br>
-      <%= tweet.created_at.to_datetime.strftime("%b %-d %Y %l:%M %P") %>
+      <%= tweet.text %>
     </li>
   <% end %>
 </ul>

@@ -16,7 +16,7 @@ class TwitterAPI
     end
   end
 
-  def fetch_tweets(username: "everythinggoats", count: 25)
+  def fetch_tweets(username:, count: 25)
     client.user_timeline(username, count: count)
   end
 

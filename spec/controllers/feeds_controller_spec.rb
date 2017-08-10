@@ -2,11 +2,11 @@
 
 require "rails_helper"
 
-RSpec.describe DashboardController, type: :controller do
+RSpec.describe FeedsController, type: :controller do
 
-  describe "GET #index" do
+  describe "GET #show" do
     it "returns http success" do
-      get :index
+      get :show
       expect(response).to be_ok
     end
   end
