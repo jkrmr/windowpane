@@ -18,6 +18,8 @@ class TwitterAPI
 
   def fetch_tweets(username:, count: 25)
     client.user_timeline(username, count: count)
+  rescue Twitter::Error::Unauthorized
+    []
   end
 
 end
