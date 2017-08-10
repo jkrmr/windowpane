@@ -1,5 +1,8 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
+
   resources :users, only: :show
+  root to: "dashboard#home"
+
 end
