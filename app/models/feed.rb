@@ -2,7 +2,7 @@
 
 class Feed < ApplicationRecord
 
-  validates :username, :payload, presence: true
+  validates :username, presence: true
 
   def self.recent_entries_for(username:)
     where(username: username)

@@ -9,6 +9,25 @@
   </head>
 
   <body>
+    <% unless flash.empty? %>
+      <div>
+        <% flash.each do |type, message| %>
+          <li><%= type %> : <%= message %></li>
+        <% end %>
+      </div>
+    <% end %>
+
+    <nav>
+      <%= link_to "Home", root_url %>
+      <br/>
+
+      <% if current_user.present? %>
+        Logged in as <%= current_user.email %>
+        <%= link_to "Log out", logout_path, method: :delete %>
+      <% end %>
+    </nav>
+
     <%= yield %>
   </body>
+
 </html>
