@@ -72,6 +72,11 @@ GEM
     equalizer (0.0.11)
     erubi (1.6.1)
     execjs (2.7.0)
+    factory_girl (4.8.0)
+      activesupport (>= 3.0.0)
+    factory_girl_rails (4.8.0)
+      factory_girl (~> 4.8.0)
+      railties (>= 3.0.0)
     faraday (0.11.0)
       multipart-post (>= 1.2, < 3)
     ffi (1.9.18)
@@ -257,6 +262,7 @@ PLATFORMS
 DEPENDENCIES
   bcrypt (~> 3.1.11)
   capybara
+  factory_girl_rails
   figaro (~> 1.1)
   jazz_fingers
   jbuilder (~> 2.5)
