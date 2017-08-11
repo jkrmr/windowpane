@@ -17,6 +17,7 @@ gem "sass-rails", "~> 5.0"
 gem "twitter", "~> 6.1"
 gem "uglifier", ">= 1.3.0"
 gem "webpacker"
+gem "webmock"
 
 group :development, :test do
   gem "factory_girl_rails"
@@ -24,6 +25,7 @@ group :development, :test do
   gem "pry-byebug"
   gem "pry-rails"
   gem "rspec-rails"
+  gem "vcr"
 end
 
 group :test do
