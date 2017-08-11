@@ -4,6 +4,8 @@
 # Initialized with a Hash
 class FeedItem < OpenStruct
 
+  include Presenter
+
   def self.from_list(list)
     list.map { |item| new(item) }
   end
@@ -81,16 +83,6 @@ class FeedItem < OpenStruct
     text.gsub(to_replace, replacements)
         .html_safe # rubocop:disable Rails/OutputSafety
         .freeze # freeze so html_safe string can't be modified elsewhere
-  end
-
-  private
-
-  def url_helpers
-    Rails.application.routes.url_helpers
-  end
-
-  def h
-    ActionController::Base.helpers
   end
 
 end
