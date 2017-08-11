@@ -7,7 +7,7 @@ class FeedItem < OpenStruct
   end
 
   def date_posted
-    created_at.to_datetime.strftime("%b %-d %Y %l:%M %P")
+    created_at.to_datetime.strftime("%b %-d %Y %l:%M%P")
   end
 
 end

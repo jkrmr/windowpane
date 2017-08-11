@@ -4,9 +4,9 @@ class Feed < ApplicationRecord
 
   validates :username, presence: true
 
-  def self.recent_entries_for(username:)
+  def self.recent_entries_for(username:, minutes_ago: 5)
     where(username: username)
-      .where("created_at >= ?", 5.minutes.ago)
+      .where("created_at >= ?", minutes_ago.minutes.ago)
       .limit(1)
       .order(created_at: :desc)
       .first

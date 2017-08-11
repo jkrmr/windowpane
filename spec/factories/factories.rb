@@ -7,4 +7,9 @@ FactoryGirl.define do
     password { "password" }
     password_confirmation { "password" }
   end
+
+  factory :feed do
+    sequence(:username) { |n| "username-#{n}" }
+    payload { [{ "id" => 982373, "text" => "this is a tweet!" }] }
+  end
 end
