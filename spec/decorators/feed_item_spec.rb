@@ -2,7 +2,7 @@
 
 require "rails_helper"
 
-RSpec.describe FeedItem, type: :model do
+RSpec.describe FeedItem, type: :decorator do
   describe "#date_posted" do
     it "returns a string representation of #created_at" do
       feb3 = Time.zone.parse("3rd Feb 2001 04:05:06 PM")
