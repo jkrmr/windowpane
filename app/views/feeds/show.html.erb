@@ -4,7 +4,7 @@
   <ul>
     <% tweets.each do |tweet| %>
       <li>
-        <%= tweet.date_posted %>
+        <%= tweet.tweet_type %> at <%= tweet.date_posted %>
         <br>
         <%= tweet.body %>
       </li>
