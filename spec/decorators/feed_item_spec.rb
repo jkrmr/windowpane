@@ -13,4 +13,32 @@ RSpec.describe FeedItem, type: :decorator do
       expect(date_str).to eq "Feb 3 2001  4:05pm"
     end
   end
+
+  describe "#tweet_type" do
+    it "given a retweet, returns 'retweeted'"
+    it "given a non-retweet, returns 'tweeted'"
+  end
+
+  describe "#retweet?" do
+    it "returns true if a retweet"
+    it "returns false if an original tweet"
+  end
+
+  describe "#original_tweet" do
+    it "returns the underlying original tweet if a retweet"
+    it "returns self if not a retweet"
+  end
+
+  describe "#entities" do
+    it "returns the entities hash from the original tweet"
+  end
+
+  describe "#text" do
+    it "returns the tweet text from the original tweet"
+  end
+
+  describe "#body" do
+    it "replaces entities in the tweet text with links or images"
+  end
+
 end
