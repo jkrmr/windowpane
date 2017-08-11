@@ -1,0 +1,83 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.twitter.com/1.1/statuses/user_timeline.json?count=25&screen_name=divya
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      User-Agent:
+      - TwitterRubyGem/6.1.0
+      Authorization:
+      - OAuth oauth_consumer_key="XkDb44Pi94cC93Vb5yGfrfM6R", oauth_nonce="37b0af5b63295a60f727c4e8c92c99b3",
+        oauth_signature="gdXm0w320SOY2I%2FEJd%2BEfV%2FsuBw%3D", oauth_signature_method="HMAC-SHA1",
+        oauth_timestamp="1502416600", oauth_token="844271789903532032-NRcunCFKtmt61Jg8jmq72ahnwmMzLsT",
+        oauth_version="1.0"
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 401
+      message: Authorization Required
+    headers:
+      Cache-Control:
+      - no-cache, no-store, must-revalidate, pre-check=0, post-check=0
+      Content-Disposition:
+      - attachment; filename=json.json
+      Content-Length:
+      - '99'
+      Content-Type:
+      - application/json;charset=utf-8
+      Date:
+      - Fri, 11 Aug 2017 01:56:40 GMT
+      Expires:
+      - Tue, 31 Mar 1981 05:00:00 GMT
+      Last-Modified:
+      - Fri, 11 Aug 2017 01:56:40 GMT
+      Pragma:
+      - no-cache
+      Server:
+      - tsa_b
+      Set-Cookie:
+      - guest_id=v1%3A150241660049455830; Expires=Sun, 11 Aug 2019 01:56:40 UTC; Path=/;
+        Domain=.twitter.com
+      - lang=en; Path=/
+      - personalization_id="v1_I7vo+DuwKa4CUgBQYap69w=="; Expires=Sun, 11 Aug 2019
+        01:56:40 UTC; Path=/; Domain=.twitter.com
+      Status:
+      - 401 Unauthorized
+      Strict-Transport-Security:
+      - max-age=631138519
+      Www-Authenticate:
+      - OAuth realm="https://api.twitter.com"
+      X-Access-Level:
+      - read-write-directmessages
+      X-Connection-Hash:
+      - dc2b595f373369cd3e4b1fd6790e233d
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Rate-Limit-Limit:
+      - '900'
+      X-Rate-Limit-Remaining:
+      - '897'
+      X-Rate-Limit-Reset:
+      - '1502416891'
+      X-Response-Time:
+      - '49'
+      X-Transaction:
+      - 00c8745d00c0464b
+      X-Twitter-Response-Tags:
+      - BouncerCompliant
+      X-Xss-Protection:
+      - 1; mode=block
+    body:
+      encoding: ASCII-8BIT
+      string: '{"request":"\/1.1\/statuses\/user_timeline.json","error":"Not authorized."}'
+    http_version: 
+  recorded_at: Fri, 11 Aug 2017 01:56:40 GMT
+recorded_with: VCR 3.0.3
