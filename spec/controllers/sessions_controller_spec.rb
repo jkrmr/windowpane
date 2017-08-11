@@ -21,7 +21,7 @@ RSpec.describe SessionsController, type: :controller do
   describe "GET #destroy" do
     it "returns http success" do
       delete :destroy
-      expect(response).to redirect_to(root_url)
+      expect(response).to redirect_to(login_url)
     end
   end
 

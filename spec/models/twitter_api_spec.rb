@@ -22,7 +22,7 @@ RSpec.describe TwitterAPI, type: :model do
                  .fetch_tweets(username: "everythinggoats", count: 5)
 
         expect(tweets.count).to eq(5)
-        expect(tweets.first.user.username).to eq "EverythingGoats"
+        expect(tweets.first.user.screen_name).to eq "EverythingGoats"
       end
     end
 
