@@ -8,6 +8,7 @@ git_source(:github) do |repo_name|
 end
 
 gem "bcrypt", "~> 3.1.11"
+gem "bootstrap", "~> 4.0.0.alpha6"
 gem "figaro", "~> 1.1"
 gem "jbuilder", "~> 2.5"
 gem "pg", "~> 0.18"
