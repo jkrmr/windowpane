@@ -35,8 +35,7 @@ class App extends Component {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-  ReactDOM.render(
-    <App />,
-    document.body.appendChild(document.createElement('div'))
-  )
+  const anchor = document.body.querySelector('.js-react-search-form')
+  if (!anchor) { return }
+  ReactDOM.render(<App />, anchor)
 })

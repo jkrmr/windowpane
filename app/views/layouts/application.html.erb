@@ -14,30 +14,31 @@
 
   <body class="container">
     <% unless flash.empty? %>
-      <div>
-        <% flash.each do |type, message| %>
-          <li><%= type %> : <%= message %></li>
-        <% end %>
-      </div>
+      <% flash.each do |type, message| %>
+        <% alert_type = (type == "alert") ? "danger" : "info" %>
+        <div class="alert alert-<%= alert_type %>" role="alert">
+          <%= message %>
+        </div>
+      <% end %>
     <% end %>
 
-    <nav class="navbar navbar-default">
-      <ul class="nav navbar-nav">
-        <li>
-          <a class="navbar-brand" href="/">windowpane</a>
+    <ul class="nav justify-content-center">
+      <li class="nav-item">
+        <%= link_to "windowpane", root_path,
+            class: "nav-link" %>
+      </li>
+      <% if current_user.present? %>
+        <li class="nav-item">
+          <!-- Logged in as <%= current_user.email %> -->
+          <%= link_to "log out", logout_path,
+              method: :delete, class: "nav-link" %>
         </li>
-        <% if current_user.present? %>
-          <li>
-            <!-- Logged in as <%= current_user.email %> -->
-            <%= link_to "Log out", logout_path, method: :delete %>
-          </li>
-        <% end %>
-      </ul>
-    </nav>
+      <% end %>
+    </ul>
 
-    <noscript>
-      <%= yield %>
-    </noscript>
+    <br/>
+
+    <%= yield %>
   </body>
 
 </html>

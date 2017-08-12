@@ -13,8 +13,9 @@ class UsersController < ApplicationController
       log_in(user)
       redirect_to root_url, notice: "Welcome!"
     else
-      flash.now[:alert] = user.errors.full_messages
-      render :new, status: :not_found
+      render :new,
+             locals: { user: user },
+             status: :unprocessable_entity
     end
   end
 

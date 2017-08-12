@@ -1,11 +1,14 @@
-<h1>show me some heckin tweets</h1>
+<noscript>
+  <form action="<%= feed_path %>" method="get">
+    <input name="username"
+           type="text"
+           value=""
+           required="true"
+           placeholder="Let's find some heckin tweets..." />
 
-<form action="<%= feed_path %>" method="get">
-  <input name="username"
-         type="text"
-         value=""
-         required="true"
-         placeholder="Enter a Twitter handle..." />
+    <input type="submit" value="Search" />
+  </form>
+</noscript>
 
-  <input type="submit" value="Search" />
-</form>
+<div class="js-react-search-form">
+</div>

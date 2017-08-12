@@ -29,7 +29,7 @@ class TweetSearchForm extends Component {
 
   handleSubmit (event) {
     event.preventDefault()
-    this.queryForTweet()
+    this.queryForTweets()
   }
 
   queryForTweets () {
@@ -38,7 +38,7 @@ class TweetSearchForm extends Component {
            user: data.user,
            tweets: data.tweets
          }))
-         .catch(error => console.info(error))
+         .catch(error => this.props.setAppState({ error: error }))
   }
 
   render () {

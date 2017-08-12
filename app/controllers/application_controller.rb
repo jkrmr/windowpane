@@ -12,8 +12,7 @@ class ApplicationController < ActionController::Base
 
   def authenticate!
     return if current_user
-    flash[:notice] = "Terribly sorry, would you mind logging in, please?"
-    redirect_to login_url
+    redirect_to login_url, notice: "Terribly sorry, would you mind logging in, please?"
   end
 
   private
