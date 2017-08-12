@@ -20,7 +20,11 @@ class ApplicationController < ActionController::Base
 
   # Render the current action's template with locals in `values.`
   def locals(values)
-    render locals: values
+    if request.xhr?
+      render json: { locals: values }
+    else
+      render locals: values
+    end
   end
 
   def log_in(user)
