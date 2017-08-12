@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import ReactDOM from 'react-dom'
 import { Form, FormGroup, Input } from 'reactstrap'
 
 class TweetSearchForm extends Component {
@@ -12,21 +11,21 @@ class TweetSearchForm extends Component {
 
   getValidationState () {
     const length = this.state.value.length
-
-    if (length < 1) {
-      return 'error'
-    } else {
-      return 'success'
-    }
+    return (length < 1) ? 'error' : 'success'
   }
 
   handleOnChange (event) {
     this.setState({value: event.target.value})
   }
 
+  handleSubmit (event) {
+    event.preventDefault()
+    this.props.submitHandler({user: this.state.value})
+  }
+
   render () {
     return (
-      <Form action='/feed' method='get'>
+      <Form action='/feed' method='get' onSubmit={this.handleSubmit.bind(this)}>
         <FormGroup>
           <Input
             name='username'
@@ -42,9 +41,4 @@ class TweetSearchForm extends Component {
   }
 }
 
-document.addEventListener('DOMContentLoaded', () => {
-  ReactDOM.render(
-    <TweetSearchForm name='React' />,
-    document.body.appendChild(document.createElement('div'))
-  )
-})
+export default TweetSearchForm
