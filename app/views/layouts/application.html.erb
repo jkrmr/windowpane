@@ -6,9 +6,14 @@
 
     <%= stylesheet_link_tag "application", media: "all" %>
     <%= javascript_include_tag "application" %>
+    <%= javascript_pack_tag "application" %>
+    <%= javascript_pack_tag "tweet_search_form" %>
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
   </head>
 
-  <body>
+  <body class="container">
     <% unless flash.empty? %>
       <div>
         <% flash.each do |type, message| %>
@@ -17,14 +22,16 @@
       </div>
     <% end %>
 
-    <nav>
-      <ul>
-        <li><%= link_to "Home", root_url %></li>
-        <% if current_user.present? %>
+    <nav class="navbar navbar-default">
+      <ul class="nav navbar-nav">
         <li>
-          Logged in as <%= current_user.email %>
-          <%= link_to "Log out", logout_path, method: :delete %>
+          <a class="navbar-brand" href="/">windowpane</a>
         </li>
+        <% if current_user.present? %>
+          <li>
+            <!-- Logged in as <%= current_user.email %> -->
+            <%= link_to "Log out", logout_path, method: :delete %>
+          </li>
         <% end %>
       </ul>
     </nav>
