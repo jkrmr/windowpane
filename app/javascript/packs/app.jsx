@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
 import TweetSearchForm from './tweet_search_form'
 import TweetSearchResults from './tweet_search_results'
-import axios from 'axios'
 
 class App extends Component {
   constructor (props) {
@@ -13,20 +12,20 @@ class App extends Component {
     }
   }
 
-  queryForTweets ({user}) {
-    axios.get(`/feed.json?username=${user}`)
-         .then(({data}) => this.setState({
-           user: data.user,
-           tweets: data.tweets
-         }))
-         .catch(error => console.info(error))
+  setAppState (state) {
+    this.setState(state)
+  }
+
+  clearTweets () {
+    this.setState({ tweets: [] })
   }
 
   render () {
     return (
       <div>
         <TweetSearchForm
-          submitHandler={this.queryForTweets.bind(this)} />
+          setAppState={this.setAppState.bind(this)} />
+
         <TweetSearchResults
           user={this.state.user}
           tweets={this.state.tweets} />
