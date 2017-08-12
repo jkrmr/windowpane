@@ -9,8 +9,9 @@ class FeedsController < ApplicationController
 
     feed = Feed.for_user(username)
     tweets = FeedItem.from_list(feed.payload)
+    user = tweets&.first&.user&.[]("screen_name") || username
 
-    locals tweets: tweets
+    locals tweets: tweets, user: user
   rescue ActionController::ParameterMissing
     redirect_to root_url, alert: "Please provide a Twitter handle."
   end
