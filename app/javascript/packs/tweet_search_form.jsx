@@ -1,45 +1,45 @@
 import React, { Component } from 'react'
 import { Form, FormGroup, Input } from 'reactstrap'
-import axios from 'axios'
 
 class TweetSearchForm extends Component {
   constructor (props) {
     super(props)
-    this.state = { value: '' }
+    this.state = { searchQuery: props.searchQuery }
   }
 
   getValidationState () {
-    const length = this.state.value.length
+    const length = this.state.searchQuery.length
     return (length < 1) ? 'danger' : 'success'
   }
 
   handleOnChange (event) {
     clearTimeout(this.state.timer)
 
-    const value = event.target.value
-    this.setState({ value })
+    const searchQuery = event.target.value
+    this.setState({ searchQuery })
+    this.props.setAppState({ searchQuery })
 
-    if (!value.length) {
-      this.props.setAppState({ tweets: [] })
+    if (!searchQuery.length) {
+      this.props.clearFetchedTweets()
     } else {
       const waitTime = 600
       this.state.timer =
-        setTimeout(this.queryForTweets.bind(this), waitTime)
+        setTimeout(() => {
+          this.props.queryForTweets(searchQuery)
+        }, waitTime)
     }
   }
 
   handleSubmit (event) {
     event.preventDefault()
-    this.queryForTweets()
+    this.props.queryForTweets(this.state.searchQuery)
   }
 
-  queryForTweets () {
-    axios.get(`/feed.json?username=${this.state.value}`)
-         .then(({ data }) => this.props.setAppState({
-           user: data.user,
-           tweets: data.tweets
-         }))
-         .catch(error => this.props.setAppState({ error: error }))
+  componentWillUpdate (props) {
+    // if in response to a new query, update state so input value updates
+    if (props.searchQuery.length > 0) {
+      this.state.searchQuery = props.searchQuery
+    }
   }
 
   render () {
@@ -52,7 +52,7 @@ class TweetSearchForm extends Component {
         <FormGroup color={this.getValidationState()}>
           <Input
             name='username'
-            value={this.state.value}
+            value={this.state.searchQuery}
             placeholder="Let's find some heckin tweets..."
             state={this.getValidationState()}
             onChange={this.handleOnChange.bind(this)}

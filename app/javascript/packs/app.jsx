@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
+import axios from 'axios'
+
 import TweetSearchForm from './tweet_search_form'
 import TweetSearchResults from './tweet_search_results'
 
@@ -7,8 +9,42 @@ class App extends Component {
   constructor (props) {
     super(props)
     this.state = {
-      user: '',
-      tweets: []
+      searchQuery: '',
+      fetchedUser: '',
+      fetchedTweets: []
+    }
+  }
+
+  queryForTweets (username) {
+    axios.get(`/feed.json?username=${username}`)
+         .then(response => {
+           const { user, tweets } = response.data
+           this.setState({
+             fetchedUser: user,
+             fetchedTweets: tweets,
+             userIsPrivate: (tweets.length === 0)
+           })
+         })
+         .catch(error => this.setState({ error }))
+  }
+
+  clearFetchedTweets () {
+    this.setState({
+      fetchedUser: '',
+      fetchedTweets: [],
+      userIsPrivate: false
+    })
+  }
+
+  handleClick (event) {
+    const {nodeName, text} = event.target
+
+    if (nodeName === 'A' && text[0] === '@') {
+      event.preventDefault()
+      const username = text.slice(1)
+      this.queryForTweets(username)
+      this.clearFetchedTweets()
+      this.setState({ searchQuery: username })
     }
   }
 
@@ -16,19 +52,20 @@ class App extends Component {
     this.setState(state)
   }
 
-  clearTweets () {
-    this.setState({ tweets: [] })
-  }
-
   render () {
     return (
-      <div>
+      <div onClick={this.handleClick.bind(this)} >
         <TweetSearchForm
-          setAppState={this.setAppState.bind(this)} />
+          searchQuery={this.state.searchQuery}
+          setAppState={this.setAppState.bind(this)}
+          clearFetchedTweets={this.clearFetchedTweets.bind(this)}
+          queryForTweets={this.queryForTweets.bind(this)} />
 
         <TweetSearchResults
-          user={this.state.user}
-          tweets={this.state.tweets} />
+          userIsPrivate={this.state.userIsPrivate}
+          searchQuery={this.state.searchQuery}
+          user={this.state.fetchedUser}
+          tweets={this.state.fetchedTweets} />
       </div>
     )
   }
