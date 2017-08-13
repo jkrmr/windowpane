@@ -61,7 +61,7 @@ class FeedItem < OpenStruct
     end
 
     hashtags.each_with_object(replacements) do |hashtag, memo|
-      hashtag_label = '##{hashtag["text"]}'
+      hashtag_label = "##{hashtag['text']}"
       memo[hashtag_label] =
         h.link_to(hashtag_label,
                   "https://twitter.com/hashtag/#{hashtag['text']}")
