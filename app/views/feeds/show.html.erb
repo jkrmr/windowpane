@@ -3,25 +3,25 @@
 <div class="row">
   <div class="col-md-6 offset-md-3">
 
-  <div class="search-results-header">
-    recent tweets by <span class="user-handle"><%= user %></span>
-  </div>
+    <div class="search-results-header">
+      recent tweets by <span class="user-handle"><%= user %></span>
+    </div>
 
-  <% if tweets.present? %>
-    <ul class="list-group">
-      <% tweets.each do |tweet| %>
-        <li class="list-group-item">
-          <div>
-            <%= tweet.body %>
-          </div>
-          <small class="text-muted">
-            <%= tweet.tweet_type %> on <%= tweet.date_posted %>
-          </small>
-        </li>
-      <% end %>
-    </ul>
-  <% else %>
-    No tweets found for that user. Their feed might not be public.
-  <% end %>
-</div>
+    <% if tweets.present? %>
+      <ul class="list-group">
+        <% tweets.each do |tweet| %>
+          <li class="list-group-item">
+            <div>
+              <%= tweet.body %>
+            </div>
+            <small class="text-muted">
+              <%= tweet.tweet_type %> on <%= tweet.date_posted %>
+            </small>
+          </li>
+        <% end %>
+      </ul>
+    <% else %>
+      No tweets found for that user. Their feed might not be public.
+    <% end %>
   </div>
+</div>
