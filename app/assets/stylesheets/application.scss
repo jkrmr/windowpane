@@ -18,6 +18,10 @@
 
 @import 'bootstrap';
 
+body {
+  font-weight: 300;
+}
+
 .image-thumbnail {
   border-radius: 5px;
   display: block;
@@ -25,4 +29,14 @@
   margin: 10px auto;
   max-width: 90%;
   width: auto;
+}
+
+.search-results-header {
+  margin: 10px auto;
+  text-align: center;
+
+  .user-handle {
+    font-style: bold;
+    font-weight: 500;
+  }
 }

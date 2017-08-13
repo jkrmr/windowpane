@@ -1,18 +1,5 @@
 <noscript>
-  <div class="row">
-    <div class="col-12">
-    <form action="<%= feed_path %>" method="get">
-      <input name="username"
-             type="text"
-             value=""
-             required="true"
-             placeholder="Let's find some heckin tweets..."
-             class="col-md-6 offset-md-3" />
-
-      <input type="submit" value="Search" class="col-1" />
-    </form>
-    </div>
-  </div>
+  <%= render "shared/search_form" %>
 </noscript>
 
 <div class="row">

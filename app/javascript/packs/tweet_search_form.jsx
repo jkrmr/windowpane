@@ -22,7 +22,7 @@ class TweetSearchForm extends Component {
     if (!value.length) {
       this.props.setAppState({ tweets: [] })
     } else {
-      const waitTime = 650
+      const waitTime = 600
       this.state.timer =
         setTimeout(this.queryForTweets.bind(this), waitTime)
     }

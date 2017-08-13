@@ -13,30 +13,32 @@
   </head>
 
   <body class="container">
-    <% unless flash.empty? %>
-      <% flash.each do |type, message| %>
-        <% alert_type = (type == "alert") ? "danger" : "info" %>
-        <div class="alert alert-<%= alert_type %>" role="alert">
-          <%= message %>
-        </div>
-      <% end %>
-    <% end %>
-
-    <ul class="nav justify-content-center">
-      <li class="nav-item">
-        <%= link_to "windowpane", root_path,
-            class: "nav-link" %>
-      </li>
-      <% if current_user.present? %>
+    <div class="row">
+      <nav class="col-md-7 offset-md-3">
+      <ul class="nav justify-content-between">
         <li class="nav-item">
-          <!-- Logged in as <%= current_user.email %> -->
-          <%= link_to "log out", logout_path,
-              method: :delete, class: "nav-link" %>
+          <%= link_to "windowpane", root_path,
+              class: "nav-link" %>
         </li>
-      <% end %>
-    </ul>
+        <% if current_user.present? %>
+          <li class="nav-item">
+            <%= link_to "log out", logout_path,
+                method: :delete, class: "nav-link" %>
+          </li>
+        <% end %>
+      </ul>
 
-    <br/>
+      </nav>
+
+      <% unless flash.empty? %>
+        <% flash.each do |type, message| %>
+          <% alert_type = (type == "alert") ? "danger" : "info" %>
+          <div class="alert alert-<%= alert_type %>" role="alert">
+            <%= message %>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
 
     <%= yield %>
   </body>

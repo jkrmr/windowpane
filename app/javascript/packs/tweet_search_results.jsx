@@ -7,8 +7,8 @@ const TweetSearchResults = ({user, tweets}) => {
 
   return (
     <div>
-      <div style={{textAlign: 'center'}}>
-        Recent tweets by {user}
+      <div className='search-results-header'>
+        recent tweets by <span className='user-handle'>{user}</span>
       </div>
 
       <ListGroup>
