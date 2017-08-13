@@ -11,7 +11,8 @@ class FeedItem < OpenStruct
   end
 
   def date_posted
-    created_at.to_datetime.strftime("%b %-d %Y %l:%M%P")
+    formatted = created_at.to_datetime.strftime("%b %-d %Y,%l:%M%P")
+    formatted.split(/\s*,\s*/).join(" at ")
   end
 
   def tweet_type

@@ -10,7 +10,7 @@ RSpec.describe FeedItem, type: :decorator do
 
       date_str = feed_item.date_posted
 
-      expect(date_str).to eq "Feb 3 2001  4:05pm"
+      expect(date_str).to eq "Feb 3 2001 at 4:05pm"
     end
   end
 
