@@ -51,8 +51,9 @@ class FeedItem < OpenStruct
       handle = h.sanitize(mention["screen_name"])
       handle_label = "@#{handle}"
 
-      memo[handle_label] =
-        h.link_to(handle_label, url_helpers.feed_path(username: handle))
+      link = h.link_to(handle_label, url_helpers.feed_path(username: handle))
+      memo[handle_label] = link
+      memo[handle_label.downcase] = link
     end
 
     urls.each_with_object(replacements) do |url, memo|
