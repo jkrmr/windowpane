@@ -15,7 +15,8 @@ class App extends Component {
     }
   }
 
-  queryForTweets (username) {
+  queryForTweets (username = this.state.searchQuery) {
+    this.setState({ searchQuery: username })
     axios.get(`/feed.json?username=${username}`)
          .then(response => {
            const { user, tweets } = response.data
@@ -37,14 +38,13 @@ class App extends Component {
   }
 
   handleClick (event) {
-    const {nodeName, text} = event.target
+    const { nodeName, text } = event.target
 
     if (nodeName === 'A' && text[0] === '@') {
       event.preventDefault()
       const username = text.slice(1)
-      this.queryForTweets(username)
       this.clearFetchedTweets()
-      this.setState({ searchQuery: username })
+      this.queryForTweets(username)
     }
   }
 

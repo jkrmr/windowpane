@@ -25,15 +25,13 @@ class TweetSearchForm extends Component {
       this.props.clearFetchedTweets()
     } else {
       const waitTime = 600
-      this.state.timer = setTimeout(() => {
-        this.props.queryForTweets(this.props.searchQuery)
-      }, waitTime)
+      this.state.timer = setTimeout(this.props.queryForTweets, waitTime)
     }
   }
 
   handleSubmit (event) {
     event.preventDefault()
-    this.props.queryForTweets(this.props.searchQuery)
+    this.props.queryForTweets()
   }
 
   render () {
