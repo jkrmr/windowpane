@@ -7,7 +7,7 @@ class SessionsController < ApplicationController
 
     if user && user.authenticate(params[:password])
       log_in(user)
-      redirect_to root_url, notice: "Welcome, #{user.name}"
+      redirect_to root_url, notice: "Welcome, #{user.name}!"
     else
       flash.now[:alert] =
         "Sorry, those credentials aren't quite right. Care to try again?"
