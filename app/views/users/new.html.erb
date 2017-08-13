@@ -1,50 +1,57 @@
-<h1>Sign up</h1>
+<div class="row">
+  <div class="col"></div>
+  <div class="col-6 justify-content-center" style="text-align: center">
+    <h1>Sign up</h1>
 
-<%= form_with(model: user, local: true) do |form| %>
-  <% if user.errors.any? %>
-    <div id="error_explanation">
-      <div class="alert alert-danger" role="alert">
-        <div>
-          <strong>
-            <%= pluralize(user.errors.count, "error") %>
-            prohibited this user from being saved:
-          </strong>
+    <%= form_with(model: user, local: true) do |form| %>
+      <% if user.errors.any? %>
+        <div id="error_explanation">
+          <div class="alert alert-danger" role="alert">
+            <div>
+              <strong>
+                <%= pluralize(user.errors.count, "error") %>
+                prohibited this user from being saved:
+              </strong>
+            </div>
+
+            <% user.errors.full_messages.each do |message| %>
+              <div><%= message %></div>
+            <% end %>
+          </div>
         </div>
+      <% end %>
 
-        <% user.errors.full_messages.each do |message| %>
-          <div><%= message %></div>
-        <% end %>
+      <div class="field">
+        <%= form.text_field :name,
+              id: :user_name,
+              placeholder: "Name",
+              required: true %>
       </div>
+      <div class="field">
+        <%= form.text_field :email,
+            id: :user_email,
+            placeholder: "Email",
+            required: true %>
+      </div>
+      <div class="field">
+        <%= form.password_field :password,
+            required: true,
+            placeholder: "Password" %>
+      </div>
+      <div class="field">
+        <%= form.password_field :password_confirmation,
+            required: true,
+            placeholder: "Password confirmation" %>
+      </div>
+
+      <div class="actions">
+        <%= form.submit %>
+      </div>
+    <% end %>
+
+    <div>
+      <%= link_to "Log in", login_path %>
     </div>
-  <% end %>
-
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name, id: :user_name %>
   </div>
-
-  <div class="field">
-    <%= form.label :email %>
-    <%= form.text_field :email, id: :user_email %>
-  </div>
-
-  <div class="field">
-    <%= form.label :password %>
-    <%= form.password_field :password %>
-  </div>
-
-  <div class="field">
-    <%= form.label :password_confirmation %>
-    <%= form.password_field :password_confirmation %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-<% end %>
-
-<div>
-  <%= link_to "Home", root_path %>
-  <br/>
-  <%= link_to "Log in", login_path %>
+  <div class="col"></div>
 </div>
