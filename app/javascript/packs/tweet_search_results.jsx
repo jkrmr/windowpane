@@ -1,4 +1,5 @@
 import React from 'react'
+import { ListGroup } from 'reactstrap'
 import TweetSearchResult from './tweet_search_result'
 
 const TweetSearchResults = ({user, tweets}) => {
@@ -6,13 +7,14 @@ const TweetSearchResults = ({user, tweets}) => {
 
   return (
     <div>
-      <div>
+      <div style={{textAlign: 'center'}}>
         Recent tweets by {user}
       </div>
-      <ul>
+
+      <ListGroup className='justify-content-center'>
         {tweets.map((tweet, i) =>
           <TweetSearchResult tweet={tweet} key={i} />)}
-      </ul>
+      </ListGroup>
     </div>
   )
 }

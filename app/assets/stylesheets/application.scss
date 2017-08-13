@@ -16,10 +16,11 @@
  *= require_self
  */
 
-@import "bootstrap";
+@import 'bootstrap';
 
 .image-thumbnail {
-    display: block;
-    height: 300px;
-    width: auto;
+  display: block;
+  height: 300px;
+  margin: auto;
+  width: auto;
 }
