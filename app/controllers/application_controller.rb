@@ -10,9 +10,15 @@ class ApplicationController < ActionController::Base
   end
   helper_method :current_user
 
+  def logged_in?
+    current_user.present?
+  end
+  helper_method :logged_in?
+
   def authenticate!
-    return if current_user
-    redirect_to login_url, notice: "Terribly sorry, would you mind logging in, please?"
+    return if logged_in?
+    flash[:notice] = "Terribly sorry, would you mind logging in, please?"
+    redirect_to login_url
   end
 
   private
@@ -27,16 +33,12 @@ class ApplicationController < ActionController::Base
   end
 
   def log_in(user)
-    flash[:notice] = login_message(user)
+    flash[:notice] = "Welcome, #{user.name}!"
     session[:user_id] = user.id
   end
 
   def log_out
     session[:user_id] = nil
-  end
-
-  def login_message(user)
-    "Welcome, #{user.name}!"
   end
 
 end
