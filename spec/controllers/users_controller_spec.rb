@@ -18,7 +18,7 @@ RSpec.describe UsersController, type: :controller do
 
         expect(response).to redirect_to(root_url)
         expect(flash[:alert]).to be_blank
-        expect(flash[:notice]).to eq "Welcome!"
+        expect(flash[:notice]).to match "Welcome"
       end
     end
 
