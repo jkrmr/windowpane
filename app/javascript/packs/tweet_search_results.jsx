@@ -11,9 +11,9 @@ const TweetSearchResults = ({user, tweets}) => {
         Recent tweets by {user}
       </div>
 
-      <ListGroup className='justify-content-center'>
-        {tweets.map((tweet, i) =>
-          <TweetSearchResult tweet={tweet} key={i} />)}
+      <ListGroup>
+        {tweets.map((tweet) =>
+          <TweetSearchResult tweet={tweet} key={tweet.id} />)}
       </ListGroup>
     </div>
   )
