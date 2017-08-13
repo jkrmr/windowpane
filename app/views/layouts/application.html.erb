@@ -7,6 +7,7 @@
     <%= stylesheet_link_tag "application", media: "all" %>
     <%= javascript_include_tag "application" %>
     <%= javascript_pack_tag "app" %>
+    <%= javascript_pack_tag "flash_message" %>
 
     <meta name="viewport"
           content="width=device-width, initial-scale=1.0">
@@ -33,14 +34,23 @@
       </nav>
     </div>
 
-    <div>
+    <div class="row">
       <% unless flash.empty? %>
-        <% flash.each do |type, message| %>
-          <% alert_type = (type == "alert") ? "danger" : "info" %>
-          <div role="alert"
-               class="alert alert-<%= alert_type %> col-md-7 offset-md-3">
-            <%= message %>
+        <noscript class="col-md-12">
+          <div class="col-md-7 offset-md-3">
+            <% flash.each do |type, message| %>
+              <% alert_type = (type == "alert") ? "danger" : "info" %>
+              <div role="alert" class="alert alert-<%= alert_type %>">
+                <%= message %>
+              </div>
+            <% end %>
           </div>
+        </noscript>
+
+        <%= content_tag :div,
+            role: "alert",
+            class: "js-flash-message col-md-7 offset-md-3",
+            data: flash.to_a.first.to_json do %>
         <% end %>
       <% end %>
     </div>
