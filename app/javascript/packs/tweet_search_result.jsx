@@ -1,18 +1,17 @@
 import React from 'react'
-import {
-  ListGroupItem,
-  ListGroupItemText
-} from 'reactstrap'
+import { ListGroupItem } from 'reactstrap'
 
 const TweetSearchResult = ({tweet}) => {
   return (
-    <ListGroupItem className='justify-content-center'>
-      <ListGroupItemText>
-        <div dangerouslySetInnerHTML={{__html: tweet.body}} />
-        <small class='text-muted justify-content-center'>
-          {tweet.tweet_type} at {tweet.date_posted}
-        </small>
-      </ListGroupItemText>
+    <ListGroupItem
+      className='justify-content-center'
+      style={{display: 'block'}}>
+
+      <div dangerouslySetInnerHTML={{__html: tweet.body}} />
+
+      <small className='text-muted'>
+        {tweet.tweet_type} on {tweet.date_posted}
+      </small>
     </ListGroupItem>
   )
 }
