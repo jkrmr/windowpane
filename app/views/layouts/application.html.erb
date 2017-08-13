@@ -17,15 +17,18 @@
       <nav class="col-md-7 offset-md-3">
         <ul class="nav justify-content-between">
           <li class="nav-item">
-            <%= link_to "windowpane", root_path,
-            class: "nav-link" %>
+            <%= link_to "windowpane", root_path, class: "nav-link" %>
           </li>
-          <% if current_user.present? %>
+
+          <% if logged_in? %>
             <li class="nav-item">
-              <%= link_to "log out", logout_path,
-              method: :delete, class: "nav-link" %>
+              <%= button_to "log out", logout_path,
+              { method: :delete,
+                class: "remove-button-style",
+                form_class: "nav-link"} %>
             </li>
           <% end %>
+
         </ul>
       </nav>
     </div>

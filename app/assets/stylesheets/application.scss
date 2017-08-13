@@ -40,3 +40,13 @@ body {
     font-weight: 500;
   }
 }
+
+.remove-button-style {
+  background-color: transparent;
+  border: 0;
+  box-sizing: none;
+  color: #0275d8;
+  cursor: pointer;
+  font-weight: 300;
+  outline: none;
+}
