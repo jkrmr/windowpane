@@ -4,11 +4,11 @@ import { Form, FormGroup, Input } from 'reactstrap'
 class TweetSearchForm extends Component {
   constructor (props) {
     super(props)
-    this.state = { searchQuery: props.searchQuery }
+    this.state = {}
   }
 
   getValidationState () {
-    const length = this.state.searchQuery.length
+    const length = this.props.searchQuery.length
     return (length < 1) ? 'danger' : 'success'
   }
 
@@ -16,30 +16,24 @@ class TweetSearchForm extends Component {
     clearTimeout(this.state.timer)
 
     const searchQuery = event.target.value
-    this.setState({ searchQuery })
-    this.props.setAppState({ searchQuery })
+    this.props.setAppState({
+      searchQuery: searchQuery,
+      userIsPrivate: false
+    })
 
-    if (!searchQuery.length) {
+    if (!this.props.searchQuery.length) {
       this.props.clearFetchedTweets()
     } else {
       const waitTime = 600
-      this.state.timer =
-        setTimeout(() => {
-          this.props.queryForTweets(searchQuery)
-        }, waitTime)
+      this.state.timer = setTimeout(() => {
+        this.props.queryForTweets(this.props.searchQuery)
+      }, waitTime)
     }
   }
 
   handleSubmit (event) {
     event.preventDefault()
-    this.props.queryForTweets(this.state.searchQuery)
-  }
-
-  componentWillUpdate (props) {
-    // if in response to a new query, update state so input value updates
-    if (props.searchQuery.length > 0) {
-      this.state.searchQuery = props.searchQuery
-    }
+    this.props.queryForTweets(this.props.searchQuery)
   }
 
   render () {
@@ -52,7 +46,7 @@ class TweetSearchForm extends Component {
         <FormGroup color={this.getValidationState()}>
           <Input
             name='username'
-            value={this.state.searchQuery}
+            value={this.props.searchQuery}
             placeholder="Let's find some heckin tweets..."
             state={this.getValidationState()}
             onChange={this.handleOnChange.bind(this)}
