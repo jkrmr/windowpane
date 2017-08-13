@@ -27,7 +27,7 @@ class ApplicationController < ActionController::Base
   end
 
   def log_in(user)
-    flash.now[:notice] = login_message(user)
+    flash[:notice] = login_message(user)
     session[:user_id] = user.id
   end
 

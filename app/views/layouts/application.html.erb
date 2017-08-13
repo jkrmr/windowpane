@@ -28,7 +28,9 @@
           <% end %>
         </ul>
       </nav>
+    </div>
 
+    <div>
       <% unless flash.empty? %>
         <% flash.each do |type, message| %>
           <% alert_type = (type == "alert") ? "danger" : "info" %>
