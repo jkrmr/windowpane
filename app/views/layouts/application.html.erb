@@ -15,19 +15,18 @@
   <body class="container">
     <div class="row">
       <nav class="col-md-7 offset-md-3">
-      <ul class="nav justify-content-between">
-        <li class="nav-item">
-          <%= link_to "windowpane", root_path,
-              class: "nav-link" %>
-        </li>
-        <% if current_user.present? %>
+        <ul class="nav justify-content-between">
           <li class="nav-item">
-            <%= link_to "log out", logout_path,
-                method: :delete, class: "nav-link" %>
+            <%= link_to "windowpane", root_path,
+            class: "nav-link" %>
           </li>
-        <% end %>
-      </ul>
-
+          <% if current_user.present? %>
+            <li class="nav-item">
+              <%= link_to "log out", logout_path,
+              method: :delete, class: "nav-link" %>
+            </li>
+          <% end %>
+        </ul>
       </nav>
 
       <% unless flash.empty? %>
