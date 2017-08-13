@@ -11,7 +11,9 @@ class App extends Component {
     this.state = {
       searchQuery: '',
       fetchedUser: '',
-      fetchedTweets: []
+      fetchedTweets: [],
+      userIsPrivate: false,
+      error: ''
     }
   }
 
@@ -54,7 +56,7 @@ class App extends Component {
 
   render () {
     return (
-      <div onClick={this.handleClick.bind(this)} >
+      <div onClick={this.handleClick.bind(this)}>
         <TweetSearchForm
           searchQuery={this.state.searchQuery}
           setAppState={this.setAppState.bind(this)}

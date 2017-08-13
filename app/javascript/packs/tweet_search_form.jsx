@@ -1,19 +1,15 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import { Form, FormGroup, Input } from 'reactstrap'
 
 class TweetSearchForm extends Component {
-  constructor (props) {
-    super(props)
-    this.state = {}
-  }
-
   getValidationState () {
     const length = this.props.searchQuery.length
     return (length < 1) ? 'danger' : 'success'
   }
 
   handleOnChange (event) {
-    clearTimeout(this.state.timer)
+    clearTimeout(this.timer)
 
     const searchQuery = event.target.value
     this.props.setAppState({
@@ -25,7 +21,7 @@ class TweetSearchForm extends Component {
       this.props.clearFetchedTweets()
     } else {
       const waitTime = 600
-      this.state.timer = setTimeout(this.props.queryForTweets, waitTime)
+      this.timer = setTimeout(this.props.queryForTweets, waitTime)
     }
   }
 
@@ -53,6 +49,13 @@ class TweetSearchForm extends Component {
       </Form>
     )
   }
+}
+
+TweetSearchForm.propTypes = {
+  searchQuery: PropTypes.string.isRequired,
+  setAppState: PropTypes.func.isRequired,
+  clearFetchedTweets: PropTypes.func.isRequired,
+  queryForTweets: PropTypes.func.isRequired
 }
 
 export default TweetSearchForm

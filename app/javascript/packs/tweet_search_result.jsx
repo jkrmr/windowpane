@@ -1,5 +1,6 @@
 import React from 'react'
 import { ListGroupItem } from 'reactstrap'
+import PropTypes from 'prop-types'
 
 const TweetSearchResult = ({tweet}) => {
   return (
@@ -14,6 +15,10 @@ const TweetSearchResult = ({tweet}) => {
       </small>
     </ListGroupItem>
   )
+}
+
+TweetSearchResult.PropTypes = {
+  tweet: PropTypes.object.isRequired
 }
 
 export default TweetSearchResult

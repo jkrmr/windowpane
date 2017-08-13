@@ -1,5 +1,7 @@
+import PropTypes from 'prop-types'
 import React from 'react'
 import { ListGroup } from 'reactstrap'
+
 import TweetSearchResult from './tweet_search_result'
 
 const TweetSearchResults = ({ userIsPrivate, searchQuery, user, tweets }) => {
@@ -41,6 +43,13 @@ const TweetSearchResults = ({ userIsPrivate, searchQuery, user, tweets }) => {
       </ListGroup>
     </div>
   )
+}
+
+TweetSearchResults.PropTypes = {
+  userIsPrivate: PropTypes.bool.isRequired,
+  searchQuery: PropTypes.string.isRequired,
+  user: PropTypes.string.isRequired,
+  tweets: PropTypes.array.isRequired
 }
 
 export default TweetSearchResults
