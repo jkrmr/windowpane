@@ -1,17 +1,20 @@
 <noscript>
-  <form action="<%= feed_path %>" method="get">
-    <input name="username"
-           type="text"
-           value=""
-           required="true"
-           placeholder="Let's find some heckin tweets..." />
+  <div class="row">
+    <div class="col-12">
+    <form action="<%= feed_path %>" method="get">
+      <input name="username"
+             type="text"
+             value=""
+             required="true"
+             placeholder="Let's find some heckin tweets..."
+             class="col-md-6 offset-md-3" />
 
-    <input type="submit" value="Search" />
-  </form>
+      <input type="submit" value="Search" class="col-1" />
+    </form>
+    </div>
+  </div>
 </noscript>
 
 <div class="row">
-  <div class="col"></div>
-  <div class="col-6 col-sm-8 js-twitter-search"></div>
-  <div class="col"></div>
+  <div class="col-md-7 offset-md-3 js-twitter-search"></div>
 </div>

@@ -19,8 +19,10 @@
 @import 'bootstrap';
 
 .image-thumbnail {
+  border-radius: 5px;
   display: block;
-  height: 300px;
-  margin: auto;
+  height: auto;
+  margin: 10px auto;
+  max-width: 90%;
   width: auto;
 }
