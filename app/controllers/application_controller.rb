@@ -33,7 +33,6 @@ class ApplicationController < ActionController::Base
   end
 
   def log_in(user)
-    flash[:notice] = "Welcome, #{user.name}!"
     session[:user_id] = user.id
   end
 

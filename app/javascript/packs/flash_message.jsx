@@ -15,14 +15,9 @@ class FlashMessage extends React.Component {
   }
 
   getMessageType () {
-    switch (this.props.type) {
-      case 'alert':
-        return 'danger'
-      case 'notice':
-        return 'info'
-      default:
-        return 'warning'
-    }
+    console.log(this.props)
+    const maps = { alert: 'danger', notice: 'info' }
+    return maps[this.props.type] || 'warning'
   }
 
   render () {
