@@ -1,1 +1,11 @@
 * windowpane
+
+** description
+
+[TODO]
+
+** demo
+
+(To test the live version, log in with jkrmr@example.com / foobarbaz)
+
+[[https://user-images.githubusercontent.com/4433943/30129782-16e153e6-9315-11e7-8069-2efedfba20a3.gif]]
