@@ -1,5 +1,7 @@
 * windowpane
 
+[[https://circleci.com/gh/jkrmr/windowpane][https://circleci.com/gh/jkrmr/windowpane.svg?style=svg]]
+
 ** description
 
 A minimal-friction Twitter client built with React and Rails.
