@@ -1,6 +1,6 @@
 * windowpane
 
-[[https://circleci.com/gh/jkrmr/windowpane][https://circleci.com/gh/jkrmr/windowpane.svg?style=svg]]
+[[https://circleci.com/gh/jmromer/windowpane][https://circleci.com/gh/jmromer/windowpane.svg?style=svg]]
 
 ** description
 
